@@ -6,6 +6,7 @@ import DiceThree from "./assets/three.png";
 import DiceFour from "./assets/four.png";
 import DiceFive from "./assets/five.png";
 import DiceSix from "./assets/six.png";
+import DiceComponent from "./DiceComponent";
 
 function DiceScreen() {
   const diceImages = [DiceOne, DiceTwo, DiceThree, DiceFour, DiceFive, DiceSix];
@@ -15,6 +16,8 @@ function DiceScreen() {
 
   const handleTossDice = () => {
     setRolling(true);
+
+setTimeout(()=>{ console.log("Hi")},10000)
 
     setTimeout(() => {
       const randomNumber = Math.floor(Math.random() * 6); // Generates 0-5
@@ -26,7 +29,7 @@ function DiceScreen() {
   return (
     <View style={styles.wrapper}>
       <TouchableOpacity onPress={handleTossDice} disabled={rolling}>
-        <Image source={diceImage} style={styles.diceImage} />
+        <DiceComponent diceImage={diceImage} customStyle={styles.diceComponent}/>
       </TouchableOpacity>
       <Button
         title="Roll Dice"
@@ -46,7 +49,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "white",
   },
-  diceImage: {
+  diceComponent: {
     width: 100,
     height: 100,
     marginBottom: 20,
